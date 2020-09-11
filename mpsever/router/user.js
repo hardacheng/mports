@@ -42,9 +42,11 @@ router.post("/login",(req,res)=>{
   let sql = 'SELECT * FROM wearer WHERE phone=? AND password=?';
   pool.query(sql,[phone,password],(err,result)=>{
     if(err) throw err;
+      console.log(result[0])
+
     if(result.length>0){
       // 表示登陆成功
-      res.send('1');
+      res.send({code:'1',res:result[0]});
     }else{
       res.send('0');
     }

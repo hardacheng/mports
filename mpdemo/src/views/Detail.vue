@@ -84,7 +84,7 @@
       <hr />
     </div>
     <div class="dbtn">
-      <button @click="tocart">加入购物袋</button>
+      <button @click="tocar">加入购物袋</button>
       <button @click="math">结算</button>
     </div>
   </div>
@@ -116,7 +116,7 @@ export default {
     getData(v){
       // console.log(v);
       this.axios.get('/pro/detail?xid='+v).then(res=>{
-        console.log(res);
+        // console.log(res);
         // 将数据拼接好加载到页面
         res.data.dcolor.forEach(item => {
           item.smimage="http://localhost:3333/mpimg/detail/"+item.smimage;
@@ -168,7 +168,9 @@ export default {
     // 心选
     xinxuan() {},
     // 购物车
-    tocart(){},
+    tocar(){
+
+    },
     // 去结算页面
     math(){}
   },

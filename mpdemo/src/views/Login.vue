@@ -1,6 +1,7 @@
 <template>
   <div class="login">
-    <div class="logins">
+    <div class="logins" v-if="this.$store.state.isLogin==false">
+      <!--   -->
       <p>登录账户</p>
 
       <p>请输入注册的手机/邮箱和密码</p>
@@ -21,6 +22,9 @@
         <button>注册新账户</button>
       </router-link>
     </div>
+    <div v-else style="marginTop:100px">
+      <p style="textAlign:center">您已经登录了~</p>
+    </div>
   </div>
 </template>
 <script>
@@ -39,9 +43,19 @@ export default {
           "/user/login",
           qs.stringify({ phone: this.phone, password: this.password })
         )
-        .then((res) => {
-          if (res.data == 1) {
+        .then(res => {
+           console.log(res)
+          if (res.data.code == 1) {
+            console.log(res.data.res)
+            this.$store.commit('login_mutation',res.data.res)
+            localStorage.setItem('isLogin',true)
+            localStorage.setItem('phone',res.data.res.phone)
+            localStorage.setItem('password',res.data.res.password)
+            localStorage.setItem('wname',res.data.res.wname)
             this.$router.push("/");
+            // 因为vue是单页面应用,登录后跳转个人中心不刷新缓存,而缓存读取需要在页面刷新一次
+            // location.reload();
+
           } else {
             this.$messagebox("错误提示", "电话号码或密码错误");
             setTimeout(() => {
@@ -50,6 +64,9 @@ export default {
           }
         });
     },
+    mounted(){
+      console.log(this.$store.state.isLogin)
+    }
   },
 };
 </script>

@@ -17,7 +17,7 @@
         </router-link>
       </mt-tab-item>
       <mt-tab-item>
-        <router-link to="/">
+        <router-link to="/mycenter">
           <img src="../assets/images/smimg/zhongxin.png" alt />
         </router-link>
       </mt-tab-item>

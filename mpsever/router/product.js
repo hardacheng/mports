@@ -29,7 +29,7 @@ router.get('/product', (req, res) => {
 // 详情页
 router.get('/detail', (req, res) => {
   let obj = req.query.xid;
-  console.log(obj)
+  // console.log(obj)
   let sql = 'SELECT * FROM pdetail WHERE xid=?';
   pool.query(sql, [obj], (err, rs) => {
     if (err) throw err;
@@ -38,7 +38,7 @@ router.get('/detail', (req, res) => {
     sql = 'SELECT * FROM dswiper WHERE xid=?';
     pool.query(sql, [obj], (err, rs) => {
       if (err) throw err;
-      console.log(rs);
+      // console.log(rs);
       let d2 = rs;
       sql = 'SELECT * FROM dcolor WHERE xid=?';
       pool.query(sql, [obj], (err, rs) => {

@@ -5,14 +5,20 @@ import Login from "../views/Login.vue"
 import Register from "../views/Register.vue"
 import Product from "../views/Product.vue" 
 import Detail from "../views/Detail.vue"
-import Shopcart from "../views/Shopcart.vue"
+import Shopcar from "../views/Shopcar.vue"
+import Mycenter from "../views/Mycenter.vue"
 Vue.use(VueRouter)
 
 const routes = [
   {
-    path: '/shopcart',
-    name: 'Shopcart',
-    component: Shopcart
+    path: '/mycenter',
+    name: 'Mycenter',
+    component: Mycenter
+  },
+  {
+    path: '/shopcar',
+    name: 'Shopcar',
+    component: Shopcar
   },
   {
     path: '/detail',
